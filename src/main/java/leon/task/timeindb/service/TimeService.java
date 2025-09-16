@@ -24,9 +24,7 @@ public class TimeService {
 
     private final TimeRepository repo;
     private final BatchWriterService writer;
-
-
-    private final LinkedBlockingDeque<Instant> buffer = new LinkedBlockingDeque<>(100_000);
+    private final LinkedBlockingDeque<Instant> buffer;
 
     private volatile boolean dbUp = true;
     private volatile long lastReconnectTryMs = 0L;

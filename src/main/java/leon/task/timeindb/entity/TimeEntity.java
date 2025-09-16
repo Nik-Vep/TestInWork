@@ -27,7 +27,6 @@ public class TimeEntity {
 
     @Column(nullable = false,
             updatable = false,
-            unique = true,
-            columnDefinition = "TIMESTAMPTZ")
+            unique = true)
     private Instant createdAt;
 }
