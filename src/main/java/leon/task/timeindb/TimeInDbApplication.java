@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @EnableScheduling
-@SpringBootApplication
+@SpringBootApplication // Аннотация, объединяющая @Configuration, @EnableAutoConfiguration и @ComponentScan
 public class TimeInDbApplication {
 
     public static void main(String[] args) {

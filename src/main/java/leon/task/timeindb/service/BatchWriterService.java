@@ -20,14 +20,20 @@ public class BatchWriterService {
 
     @Transactional(noRollbackFor = DataIntegrityViolationException.class)
     public void insertBatch(List<Instant> batch) {
-        int inserted = 0;
-        int duplicates = 0;
+        int inserted = 0; // Счетчик успешно вставленных записей
+        int duplicates = 0;   // Счетчик дубликатов (нарушение уникальности)
 
-        for (Instant ts : batch) {
+        for (Instant ts : batch) { // Итерация по всем элементам переданного списка
             try {
+                // Создание новой сущности с временной меткой и сохранение в БД
+                // null - ID будет сгенерирован автоматически
                 repo.save(new TimeEntity(null, ts));
-                inserted++;
+                inserted++; // Увеличение счетчика успешных вставок
+
+
             } catch (DataIntegrityViolationException e) {
+                // Обработка нарушения целостности данных (дубликат уникального поля)
+                // Увеличение счетчика дубликатов
                 duplicates++;
             }
         }

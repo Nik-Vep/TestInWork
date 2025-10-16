@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.Instant;
 
-
 @Entity
 @Getter
 @Setter
@@ -25,8 +24,9 @@ public class TimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,
-            updatable = false,
-            unique = true)
+    @Column(nullable = false, // NOT NULL, гарантирует, что у каждой записи будет время создания
+            updatable = false, // Запрет на обновление после создания, защита от случайного изменения
+            unique = true)  // Уникальность значения в таблице, предотвращает дублирование временных меток
+    // Хранение момента времени (timestamp) в БД
     private Instant createdAt;
 }
