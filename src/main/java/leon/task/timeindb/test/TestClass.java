@@ -2,6 +2,6 @@ package leon.task.timeindb.test;
 
 public class TestClass {
     public static void main(String[] args) {
-        System.out.println("Новый");
+        System.out.println("Пофиксил");
     }
 }
